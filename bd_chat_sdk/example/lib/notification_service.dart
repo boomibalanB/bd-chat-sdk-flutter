@@ -11,7 +11,7 @@ class NotificationService {
 
     if (Platform.isIOS) {
       FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-        BoldDeskChatSdk.showChat();
+        BoldDeskChatSDK.showChat();
       });
     }
   }
@@ -42,7 +42,7 @@ class NotificationService {
 
   final fcmToken = await FirebaseMessaging.instance.getToken();
   if (fcmToken != null && fcmToken.isNotEmpty) {
-    BoldDeskChatSdk.setFCMRegistrationToken(fcmToken);
+    BoldDeskChatSDK.setFCMRegistrationToken(fcmToken);
   }
 }
 

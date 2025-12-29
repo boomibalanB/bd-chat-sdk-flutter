@@ -44,7 +44,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final bdChatSdkPlugin = BoldDeskChatSdk();
+  final bdChatSdkPlugin = BoldDeskChatSDK();
 
   @override
   void initState() {
@@ -54,12 +54,12 @@ class _MyAppState extends State<MyApp> {
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
-    BoldDeskChatSdk.initialize("ios_sdk_JF1jhmdlO9Hj09IbqIfnTqNvl4IK5wkCtabgmTsAbg", "https://dev-chat-integration.bolddesk.com");  
-    BoldDeskChatSdk.setPreferredTheme("light");
-    BoldDeskChatSdk.setSystemFontSize(false);
-    BoldDeskChatSdk.setLoggingEnabled();
-    // BoldDeskChatSdk.setUserEmail("boomibalan12@gmail.com");
-    // BoldDeskChatSdk.setUserPhoneNo("7825063556");
+    BoldDeskChatSDK.initialize("ios_sdk_JF1jhmdlO9Hj09IbqIfnTqNvl4IK5wkCtabgmTsAbg", "https://dev-chat-integration.bolddesk.com");  
+    BoldDeskChatSDK.setPreferredTheme("light");
+    BoldDeskChatSDK.setSystemFontSize(false);
+    BoldDeskChatSDK.setLoggingEnabled();
+    // BoldDeskChatSDK.setUserEmail("boomibalan12@gmail.com");
+    // BoldDeskChatSDK.setUserPhoneNo("7825063556");
   }
 
   @override
@@ -73,13 +73,13 @@ class _MyAppState extends State<MyApp> {
           child: Column(
             children: [
               TextButton(onPressed: (){
-                BoldDeskChatSdk.applyCustomFontFamilyInIOS("Dancing Script");
-                BoldDeskChatSdk.setUserName("boomi");
-                BoldDeskChatSdk.setUserEmail("boomi@gmail.com");
-                BoldDeskChatSdk.showChat();
+                BoldDeskChatSDK.applyCustomFontFamilyInIOS("Dancing Script");
+                BoldDeskChatSDK.setUserName("boomi");
+                BoldDeskChatSDK.setUserEmail("boomi@gmail.com");
+                BoldDeskChatSDK.showChat();
                 }, child: Text("ShowChat")),
-              TextButton(onPressed: BoldDeskChatSdk.closeChat, child: Text("Close Chat")),
-              TextButton(onPressed: BoldDeskChatSdk.clearSession, child: Text("Clear Session")),
+              TextButton(onPressed: BoldDeskChatSDK.closeChat, child: Text("Close Chat")),
+              TextButton(onPressed: BoldDeskChatSDK.clearSession, child: Text("Clear Session")),
             ],
           ),
         ),

@@ -1,7 +1,7 @@
 
 import 'bd_chat_sdk_platform_interface.dart';
 
-class BoldDeskChatSdk {
+class BoldDeskChatSDK {
   static Future<void> initialize(
     String appKey,
     String brandUrl) {
