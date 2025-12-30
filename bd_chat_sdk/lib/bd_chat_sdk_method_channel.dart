@@ -91,7 +91,7 @@ class MethodChannelBdChatSdk extends BdChatSdkPlatform {
 
   @override
   Future<bool> isFromChatSDK(Map<String, dynamic> userInfo) async {
-    return await methodChannel.invokeMethod('isFromChatSDK');
+    return await methodChannel.invokeMethod('isFromChatSDK', userInfo);
   }
 
   @override
