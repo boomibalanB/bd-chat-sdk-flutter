@@ -9,6 +9,10 @@ public class BdChatSdkPlugin: NSObject, FlutterPlugin {
     registrar.addMethodCallDelegate(instance, channel: channel)
   }
 
+  private func convertToAnyHashable(_ dict: [String: Any]) -> [AnyHashable: Any] {
+    Dictionary(uniqueKeysWithValues: dict.map { (AnyHashable($0.key), $0.value) })
+  }
+
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
     switch call.method {
     case "configure":
@@ -101,9 +105,10 @@ public class BdChatSdkPlugin: NSObject, FlutterPlugin {
       BDChatSDK.clearSession()
       result(nil) 
     case "isFromChatSDK":
-      if let userInfo = call.arguments as? [AnyHashable: Any] {
-       let isFromSDK = BDChatSDK.isFromChatSDK(userInfo: userInfo)
-            result(isFromSDK)
+      if let args = call.arguments as? [String: Any] {
+        let converted = convertToAnyHashable(args)
+        let isFromSDK = BDSupportSDK.isFromMobileSDK(userInfo: converted)
+        result(isFromSDK)
        } 
        else {
             result(false) // return false if no arguments
