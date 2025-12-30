@@ -56,7 +56,7 @@ class BoldDeskChatSDK {
     return BdChatSdkPlatform.instance.disablePushNotification();
   }
 
-  static Future<void> isFromChatSDK(Map<String, dynamic> userInfo) {
+  static Future<bool> isFromChatSDK(Map<String, dynamic> userInfo) {
     return BdChatSdkPlatform.instance.isFromChatSDK(userInfo);
   }
 
