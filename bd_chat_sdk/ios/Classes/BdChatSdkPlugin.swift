@@ -107,7 +107,7 @@ public class BdChatSdkPlugin: NSObject, FlutterPlugin {
     case "isFromChatSDK":
       if let args = call.arguments as? [String: Any] {
         let converted = convertToAnyHashable(args)
-        let isFromSDK = BDSupportSDK.isFromMobileSDK(userInfo: converted)
+        let isFromSDK = BDChatSDK.isFromChatSDK(userInfo: converted)
         result(isFromSDK)
        } 
        else {
