@@ -42,7 +42,7 @@ public class BdChatSdkPlugin: NSObject, FlutterPlugin {
 
       BDChatSDK.setPreferredTheme(preferredTheme)
       result(nil)
-    case "setFCMRegistrationToken":
+    case "enablePushNotification":
       guard let args = call.arguments as? [String: Any],
         let token = args["token"] as? String
       else {

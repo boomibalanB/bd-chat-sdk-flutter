@@ -47,8 +47,8 @@ class BoldDeskChatSDK {
     return BdChatSdkPlatform.instance.setUserToken(userToken);
   }
 
-  static Future<void> disablePushNotification(String fcmToken) {
-    return BdChatSdkPlatform.instance.disablePushNotification(fcmToken);
+  static Future<void> disablePushNotification() {
+    return BdChatSdkPlatform.instance.disablePushNotification();
   }
 
   static Future<void> handleAndroidNotification(Map<String, dynamic> body,String notificationIcon,) {

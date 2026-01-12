@@ -80,10 +80,8 @@ class MethodChannelBdChatSdk extends BdChatSdkPlatform {
   }
 
   @override
-  Future<void> disablePushNotification(String fcmToken) async {
-    await methodChannel.invokeMethod('disablePushNotification', {
-      'fcmToken': fcmToken
-    });
+  Future<void> disablePushNotification() async {
+    await methodChannel.invokeMethod('disablePushNotification');
   }
 
   @override
