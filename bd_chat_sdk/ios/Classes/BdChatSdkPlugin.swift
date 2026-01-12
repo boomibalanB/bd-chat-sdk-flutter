@@ -48,9 +48,9 @@ public class BdChatSdkPlugin: NSObject, FlutterPlugin {
       else {
         return
       }
-      BDChatSDK.enablePushNotification(fcmToken: token ?? "")
+      BDChatSDK.enablePushNotification(fcmToken: token)
       result(nil)   
-    case "setLoggingEnabled":
+    case "enableLogging":
       BDChatSDK.enableLogging()
       result(nil) 
     case "isChatOpen":
