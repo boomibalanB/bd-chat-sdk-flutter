@@ -124,6 +124,21 @@ public class BdChatSdkPlugin: NSObject, FlutterPlugin {
       }
       BDChatSDK.applySystemFontSize = enable
       result(nil)
+    case "applyTheme":
+      let args = call.arguments as? [String: Any]
+
+      let appbarColor = args?["appbarColor"] as? String
+      let accentColor = args?["accentColor"] as? String
+      let backgroundColor = args?["backgroundColor"] as? String
+      let stickyButtonColor = args?["stickyButtonColor"] as? String
+
+      BDChatSDK.applyTheme(
+          appbarColor: appbarColor,
+          accentColor: accentColor,
+          backgroundColor: backgroundColor,
+          stickyButtonColor: stickyButtonColor
+      )
+      result(nil)
     default:
       result(FlutterMethodNotImplemented)
     }

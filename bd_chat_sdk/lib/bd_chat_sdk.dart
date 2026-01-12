@@ -1,4 +1,3 @@
-
 import 'bd_chat_sdk_platform_interface.dart';
 
 class BoldDeskChatSDK {
@@ -20,20 +19,16 @@ class BoldDeskChatSDK {
     return BdChatSdkPlatform.instance.clearSession();
   }
 
-  static Future<void> setLoggingEnabled() {
-    return BdChatSdkPlatform.instance.setLoggingEnabled();
+  static Future<void> enableLogging() {
+    return BdChatSdkPlatform.instance.enableLogging();
   }
 
   static Future<void> setPreferredTheme(String theme) {
     return BdChatSdkPlatform.instance.setPreferredTheme(theme);
   }
 
-  static Future<void> setFCMRegistrationToken(String token) {
-    return BdChatSdkPlatform.instance.setFCMRegistrationToken(token);
-  }
-
-  static Future<bool> isChatOpen() {
-    return BdChatSdkPlatform.instance.isChatOpen();
+  static Future<void> enablePushNotification(String fcmToken) {
+    return BdChatSdkPlatform.instance.enablePushNotification(fcmToken);
   }
 
   static Future<void> setUserEmail(String email) {
@@ -52,19 +47,35 @@ class BoldDeskChatSDK {
     return BdChatSdkPlatform.instance.setUserToken(userToken);
   }
 
-  static Future<void> disablePushNotification() {
-    return BdChatSdkPlatform.instance.disablePushNotification();
+  static Future<void> disablePushNotification(String fcmToken) {
+    return BdChatSdkPlatform.instance.disablePushNotification(fcmToken);
   }
 
-  static Future<bool> isFromChatSDK(Map<String, dynamic> userInfo) {
-    return BdChatSdkPlatform.instance.isFromChatSDK(userInfo);
+  static Future<void> handleAndroidNotification(Map<String, dynamic> body,String notificationIcon,) {
+    return BdChatSdkPlatform.instance.handleAndroidNotification(body, notificationIcon);
+  }
+
+  static Future<bool> isFromChatSDK(Map<String, dynamic> messageData) {
+    return BdChatSdkPlatform.instance.isFromChatSDK(messageData);
+  }
+
+  static Future<void> applyCustomFontFamilyInAndroid({
+    required String regular,
+    required String medium,
+    required String semiBold,
+    required String bold}) {
+    return BdChatSdkPlatform.instance.applyCustomFontFamilyInAndroid(regular,medium,semiBold,bold);
   }
 
   static Future<void> applyCustomFontFamilyInIOS(String fontFamily) {
     return BdChatSdkPlatform.instance.applyCustomFontFamilyInIOS(fontFamily);
   }
 
-  static Future<void> setSystemFontSize(bool enable) {
-    return BdChatSdkPlatform.instance.setSystemFontSize(enable);
+  static Future<void> applyTheme(
+    {String? appbarColor,
+    String? accentColor,
+    String? backgroundColor,
+    String? stickyButtonColor}) {
+    return BdChatSdkPlatform.instance.applyTheme(appbarColor: appbarColor, accentColor: accentColor, backgroundColor: backgroundColor, stickyButtonColor: stickyButtonColor);
   }
 }

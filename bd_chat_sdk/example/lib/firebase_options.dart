@@ -50,19 +50,19 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDiKIIhFrlEZWls8ffO6sy8WpW-DU5G3Dw',
-    appId: '1:156175196414:ios:cee2cbcb4d078a056745af',
-    messagingSenderId: '156175196414',
-    projectId: 'sampleapp4-f6335',
-    storageBucket: 'sampleapp4-f6335.firebasestorage.app',
- );
+    apiKey: 'AIzaSyDKzBK8lSArzogRTHWUzYTVkALZ8E4nIdE',
+    appId: '1:723467922854:android:9846ab55e1051336223367',
+    messagingSenderId: '723467922854',
+    projectId: 'pushnotification-2adfd',
+    storageBucket: 'pushnotification-2adfd.firebasestorage.app',
+  );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDiKIIhFrlEZWls8ffO6sy8WpW-DU5G3Dw',
-    appId: '1:156175196414:ios:cee2cbcb4d078a056745af',
-    messagingSenderId: '156175196414',
-    projectId: 'sampleapp4-f6335',
-    storageBucket: 'sampleapp4-f6335.firebasestorage.app',
+    apiKey: 'AIzaSyBoLBL9Uz-ID5sWinCmwmYr8TuPiG3GO1I',
+    appId: '1:723467922854:ios:24ee71db592d8f01223367',
+    messagingSenderId: '723467922854',
+    projectId: 'pushnotification-2adfd',
+    storageBucket: 'pushnotification-2adfd.firebasestorage.app',
     iosBundleId: 'com.syncfusion.bolddeskchatsdk',
   );
 

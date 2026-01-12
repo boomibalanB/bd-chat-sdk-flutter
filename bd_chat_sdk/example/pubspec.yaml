@@ -72,9 +72,16 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
+    - family: Times New Roman
+      fonts:
+        - asset: assets/fonts/times.ttf
+          # style: italic
     - family: Dancing Script
       fonts:
         - asset: assets/fonts/dancingscript_bold.ttf
+        - asset: assets/fonts/dancingscript_medium.ttf
+        - asset: assets/fonts/dancingscript_regular.ttf
+        - asset: assets/fonts/dancingscript_semibold.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package

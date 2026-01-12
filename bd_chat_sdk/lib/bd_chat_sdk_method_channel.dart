@@ -35,8 +35,8 @@ class MethodChannelBdChatSdk extends BdChatSdkPlatform {
   }
 
   @override
-  Future<void> setLoggingEnabled() async {
-    await methodChannel.invokeMethod('setLoggingEnabled');
+  Future<void> enableLogging() async {
+    await methodChannel.invokeMethod('enableLogging');
   }
 
   @override
@@ -45,15 +45,10 @@ class MethodChannelBdChatSdk extends BdChatSdkPlatform {
   }
 
   @override
-  Future<void> setFCMRegistrationToken(String token) async {
-    await methodChannel.invokeMethod('setFCMRegistrationToken', {
-      'token': token,
+  Future<void> enablePushNotification(String fcmToken) async {
+    await methodChannel.invokeMethod('enablePushNotification', {
+      'fcmToken': fcmToken,
     });
-  }
-
-  @override
-  Future<bool> isChatOpen() async {
-    return await methodChannel.invokeMethod('isChatOpen');
   }
 
   @override
@@ -85,13 +80,35 @@ class MethodChannelBdChatSdk extends BdChatSdkPlatform {
   }
 
   @override
-  Future<void> disablePushNotification() async {
-    await methodChannel.invokeMethod('disablePushNotification');
+  Future<void> disablePushNotification(String fcmToken) async {
+    await methodChannel.invokeMethod('disablePushNotification', {
+      'fcmToken': fcmToken
+    });
   }
 
   @override
-  Future<bool> isFromChatSDK(Map<String, dynamic> userInfo) async {
-    return await methodChannel.invokeMethod('isFromChatSDK', userInfo);
+  Future<void> handleAndroidNotification(Map<String, dynamic> body, String notificationIcon) async {
+    await methodChannel.invokeMethod('handlePushNotifications', {
+      'body': body,
+      'notificationIcon': notificationIcon,
+    });
+  }
+
+  @override
+  Future<bool> isFromChatSDK(Map<String, dynamic> messageData) async {
+    return await methodChannel.invokeMethod('isFromChatSDK',{
+      'messageData': messageData
+    });
+  }
+
+  @override
+  Future<void> applyCustomFontFamilyInAndroid(String regular, String medium,String semiBold,String bold) async {
+    await methodChannel.invokeMethod('applyCustomFontFamilyInAndroid', {
+      'regular': regular,
+      'medium': medium,
+      'semiBold': semiBold,
+      'bold': bold
+    });
   }
 
   @override
@@ -101,8 +118,17 @@ class MethodChannelBdChatSdk extends BdChatSdkPlatform {
     });
   }
 
-  @override
-  Future<void> setSystemFontSize(bool enable) async {
-    await methodChannel.invokeMethod('setSystemFontSize', {'enable': enable});
+   @override
+  Future<void> applyTheme(
+    {String? appbarColor,
+    String? accentColor,
+    String? backgroundColor,
+    String? stickyButtonColor}) async {
+    await methodChannel.invokeMethod('applyTheme', {
+        'appbarColor': appbarColor,
+        'accentColor': accentColor,
+        'backgroundColor': backgroundColor,
+        'stickyButtonColor': stickyButtonColor
+      });
   }
 }

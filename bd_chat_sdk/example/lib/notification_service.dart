@@ -4,6 +4,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 
 @pragma("vm:entry-point")
 class NotificationService {
+ static String? _cachedFcmToken;
   // Initialize FirebaseMessingService to listen Messages
   static void firebaseMessagingInitialize() {
     onBackgroundMessage();
@@ -21,7 +22,10 @@ class NotificationService {
   static Future<void> backgroundHandler(RemoteMessage message) async {
     // Icon should be Drawable source
     if (Platform.isAndroid) {
-      // BoldDeskSupportSDK.handleAndroidNotification(message.data, "sample_app_logo");
+      var isFromMobileSDK = await BoldDeskChatSDK.isFromChatSDK(message.data);
+      if(isFromMobileSDK) {
+        BoldDeskChatSDK.handleAndroidNotification(message.data, "sample_app_logo");
+      }
     }
   }
 
@@ -42,16 +46,25 @@ class NotificationService {
 
   final fcmToken = await FirebaseMessaging.instance.getToken();
   if (fcmToken != null && fcmToken.isNotEmpty) {
-    BoldDeskChatSDK.setFCMRegistrationToken(fcmToken);
+    _cachedFcmToken = fcmToken;
+    BoldDeskChatSDK.enablePushNotification(fcmToken);
   }
 }
 
   static void onMessage() {
     FirebaseMessaging.onMessage.listen((message) async {
       if (Platform.isAndroid) {
-        // Icon should be Drawable source
-        // BoldDeskSupportSDK.handleAndroidNotification(message.data, "sample_app_logo");
+        var isFromMobileSDK = await BoldDeskChatSDK.isFromChatSDK(message.data);
+        if(isFromMobileSDK) {
+        BoldDeskChatSDK.handleAndroidNotification(message.data, "sample_app_logo");
+        }
       }
     });
+  }
+
+  static void disablePushNotification() {
+     if (_cachedFcmToken != null && _cachedFcmToken!.isNotEmpty) {
+       BoldDeskChatSDK.disablePushNotification(_cachedFcmToken!); 
+      }
   }
 }

@@ -41,7 +41,7 @@ abstract class BdChatSdkPlatform extends PlatformInterface {
     throw UnimplementedError('clearSession() has not been implemented.');
   }
 
-  Future<void> setLoggingEnabled() {
+  Future<void> enableLogging() {
     throw UnimplementedError('setLoggingEnabled() has not been implemented.');
   }
 
@@ -49,14 +49,10 @@ abstract class BdChatSdkPlatform extends PlatformInterface {
     throw UnimplementedError('setPreferredTheme() has not been implemented.');
   }
 
-  Future<void> setFCMRegistrationToken(String token) {
+  Future<void> enablePushNotification(String fcmToken) {
     throw UnimplementedError(
       'setFCMRegistrationToken() has not been implemented.',
     );
-  }
-
-  Future<bool> isChatOpen() async {
-    throw UnimplementedError('isChatOpen() has not been implemented.');
   }
 
   Future<void> setUserEmail(String email) async {
@@ -75,19 +71,31 @@ abstract class BdChatSdkPlatform extends PlatformInterface {
     throw UnimplementedError('setUserToken() has not been implemented.');
   }
 
-  Future<void> disablePushNotification() async {
+  Future<void> disablePushNotification(String fcmToken) async {
     throw UnimplementedError('disablePushNotification() has not been implemented.');
   }
 
-  Future<bool> isFromChatSDK(Map<String, dynamic> userInfo) async {
+  Future<void> handleAndroidNotification(Map<String, dynamic> body, String notificationIcon) async {
+    throw UnimplementedError('handleAndroidNotification() has not been implemented.');
+  }
+
+  Future<bool> isFromChatSDK(Map<String, dynamic> messageData) async {
     throw UnimplementedError('isFromChatSDK() has not been implemented.');
+  }
+
+  Future<void> applyCustomFontFamilyInAndroid(String regular, String medium,String semiBold,String bold) async {
+    throw UnimplementedError('applyCustomFontFamilyInAndroid() has not been implemented.');
   }
 
   Future<void> applyCustomFontFamilyInIOS(String fontFamily) async {
     throw UnimplementedError('applyCustomFontFamilyInIOS() has not been implemented.');
   }
 
-  Future<void> setSystemFontSize(bool enable) async {
-    throw UnimplementedError('setSystemFontSize() has not been implemented.');
+  Future<void> applyTheme(
+    {String? appbarColor,
+    String? accentColor,
+    String? backgroundColor,
+    String? stickyButtonColor}) async {
+    throw UnimplementedError('applyCustomFontFamilyInIOS() has not been implemented.');
   }
 }
