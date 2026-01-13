@@ -51,7 +51,7 @@ abstract class BdChatSdkPlatform extends PlatformInterface {
 
   Future<void> enablePushNotification(String fcmToken) {
     throw UnimplementedError(
-      'setFCMRegistrationToken() has not been implemented.',
+      'enablePushNotification() has not been implemented.',
     );
   }
 

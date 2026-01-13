@@ -44,7 +44,7 @@ public class BdChatSdkPlugin: NSObject, FlutterPlugin {
       result(nil)
     case "enablePushNotification":
       guard let args = call.arguments as? [String: Any],
-        let token = args["token"] as? String
+        let token = args["fcmToken"] as? String
       else {
         return
       }
