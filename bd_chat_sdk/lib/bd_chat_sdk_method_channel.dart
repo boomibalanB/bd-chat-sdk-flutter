@@ -46,7 +46,7 @@ class MethodChannelBdChatSdk extends BdChatSdkPlatform {
 
   @override
   Future<void> enablePushNotification(String fcmToken) async {
-    await methodChannel.invokeMethod('setFCMRegistrationToken', {
+    await methodChannel.invokeMethod('enablePushNotification', {
       'fcmToken': fcmToken,
     });
   }
