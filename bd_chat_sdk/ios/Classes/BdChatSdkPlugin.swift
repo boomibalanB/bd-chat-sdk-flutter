@@ -106,13 +106,15 @@ public class BdChatSdkPlugin: NSObject, FlutterPlugin {
       BDChatSDK.clearSession()
       result(nil) 
     case "isFromChatSDK":
-      if let userInfo = call.arguments as? [AnyHashable: Any] {
-       let isFromSDK = BDChatSDK.isFromChatSDK(userInfo: userInfo)
-            result(isFromSDK)
-       } 
-       else {
-            result(false) // return false if no arguments
-       }
+      if
+          let args = call.arguments as? [String: Any],
+          let messageData = args["messageData"] as? [AnyHashable: Any]
+      {
+          let isFromSDK = BDChatSDK.isFromChatSDK(userInfo: messageData)
+          result(isFromSDK)
+      } else {
+          result(false)
+      }
     case "applyCustomFontFamilyInIOS":
       guard let args = call.arguments as? [String: Any],
         let fontFamily = args["fontFamily"] as? String
