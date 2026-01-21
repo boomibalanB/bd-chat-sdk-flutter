@@ -1,3 +1,4 @@
+
 import 'bd_chat_sdk_platform_interface.dart';
 
 class BoldDeskChatSDK {
@@ -47,8 +48,8 @@ class BoldDeskChatSDK {
     return BdChatSdkPlatform.instance.setUserToken(userToken);
   }
 
-  static Future<void> disablePushNotification() {
-    return BdChatSdkPlatform.instance.disablePushNotification();
+  static Future<void> disablePushNotification(String fcmToken) {
+    return BdChatSdkPlatform.instance.disablePushNotification(fcmToken);
   }
 
   static Future<void> handleAndroidNotification(Map<String, dynamic> body,String notificationIcon,) {
@@ -77,5 +78,9 @@ class BoldDeskChatSDK {
     String? backgroundColor,
     String? stickyButtonColor}) {
     return BdChatSdkPlatform.instance.applyTheme(appbarColor: appbarColor, accentColor: accentColor, backgroundColor: backgroundColor, stickyButtonColor: stickyButtonColor);
+  }
+
+  static Future<void> setSystemFontSize({required bool enable}) {
+    return BdChatSdkPlatform.instance.setSystemFontSize(enable);
   }
 }

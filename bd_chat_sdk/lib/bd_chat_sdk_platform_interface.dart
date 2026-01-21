@@ -71,7 +71,7 @@ abstract class BdChatSdkPlatform extends PlatformInterface {
     throw UnimplementedError('setUserToken() has not been implemented.');
   }
 
-  Future<void> disablePushNotification() async {
+  Future<void> disablePushNotification(String fcmToken) async {
     throw UnimplementedError('disablePushNotification() has not been implemented.');
   }
 
@@ -96,6 +96,10 @@ abstract class BdChatSdkPlatform extends PlatformInterface {
     String? accentColor,
     String? backgroundColor,
     String? stickyButtonColor}) async {
-    throw UnimplementedError('applyCustomFontFamilyInIOS() has not been implemented.');
+    throw UnimplementedError('applyTheme() has not been implemented.');
+  }
+
+  Future<void> setSystemFontSize(bool enable) async {
+    throw UnimplementedError('setSystemFontSize() has not been implemented.');
   }
 }

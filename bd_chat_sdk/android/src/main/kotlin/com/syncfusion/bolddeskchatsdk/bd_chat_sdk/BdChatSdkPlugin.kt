@@ -149,6 +149,17 @@ class BdChatSdkPlugin : FlutterPlugin, MethodCallHandler {
             } catch (e: Exception) {
                 result.error("NOTIFICATION_FAILED", e.message, null)
             }
+        } else if (call.method == "applyTheme") {
+            val appBarColor  = call.argument<String>("appbarColor") ?: ""
+            val accentColor = call.argument<String>("accentColor") ?: ""
+            val backgroundColor = call.argument<String>("backgroundColor") ?: ""
+            val stickyButtonColor = call.argument<String>("stickyButtonColor") ?: ""
+            BoldDeskChatSDK.applyTheme(appBarColor , accentColor, backgroundColor, stickyButtonColor)
+            result.success("Theme applied Successfully")
+        } else if (call.method == "setSystemFontSize"){
+            val isEnabled = call.argument<Boolean>("enable") ?: false
+            BoldDeskChatSDK.setSystemFontSize(isEnabled)
+            result.success("Logging set Successfully")
         } else {
             result.notImplemented()
         }

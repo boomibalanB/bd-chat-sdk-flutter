@@ -80,8 +80,10 @@ class MethodChannelBdChatSdk extends BdChatSdkPlatform {
   }
 
   @override
-  Future<void> disablePushNotification() async {
-    await methodChannel.invokeMethod('disablePushNotification');
+  Future<void> disablePushNotification(String fcmToken) async {
+    await methodChannel.invokeMethod('disablePushNotification', {
+      'fcmToken': fcmToken
+    });
   }
 
   @override
@@ -128,5 +130,12 @@ class MethodChannelBdChatSdk extends BdChatSdkPlatform {
         'backgroundColor': backgroundColor,
         'stickyButtonColor': stickyButtonColor
       });
+  }
+
+   @override
+  Future<void> setSystemFontSize(bool enable) async {
+    await methodChannel.invokeMethod('setSystemFontSize', {
+      'enable': enable,
+    });
   }
 }

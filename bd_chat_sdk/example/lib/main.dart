@@ -61,6 +61,7 @@ class _MyAppState extends State<MyApp> {
     //               );
     BoldDeskChatSDK.initialize("android_sdk_LjjZtgcIkOVZJA5z04ttkv2aiEdoTJQQuDj3d78oKQw", "https://dev-chat-integration.bolddesk.com");
     BoldDeskChatSDK.enableLogging();
+    // BoldDeskChatSDK.applyTheme(appbarColor : "#00F7FF", accentColor : "#A8DF8E", backgroundColor : "#F6F0D7", stickyButtonColor : "#AEDEFC");
   }
 
   @override
@@ -133,14 +134,15 @@ class _HostAppUIState extends State<HostAppUI> {
                 ),
               TextButton(
                 onPressed: () {
-                  BoldDeskChatSDK.applyTheme(
-                    appbarColor: "#FF5733",
-                    accentColor: "#33FF57",
-                    backgroundColor: "#3357FF",
-                    stickyButtonColor: "#F1C40F",
-                  );
+                  BoldDeskChatSDK.applyTheme(appbarColor : "#00F7FF", accentColor : "#A8DF8E", backgroundColor : "#F6F0D7", stickyButtonColor : "#AEDEFC");
                 },
-                child: Text("Set custom theme", style: TextStyle(color: Colors.blue)),
+                child: Text("Set Custom theme", style: TextStyle(color: Colors.blue)),
+              ),
+              TextButton(
+                onPressed: () {
+                  BoldDeskChatSDK.setSystemFontSize(enable: true);
+                },
+                child: Text("Set System Font Size", style: TextStyle(color: Colors.blue)),
               ),
             ],
           ),
