@@ -71,7 +71,7 @@ abstract class BdChatSdkPlatform extends PlatformInterface {
     throw UnimplementedError('setUserToken() has not been implemented.');
   }
 
-  Future<void> disablePushNotification(String fcmToken) async {
+  Future<void> disablePushNotification() async {
     throw UnimplementedError('disablePushNotification() has not been implemented.');
   }
 

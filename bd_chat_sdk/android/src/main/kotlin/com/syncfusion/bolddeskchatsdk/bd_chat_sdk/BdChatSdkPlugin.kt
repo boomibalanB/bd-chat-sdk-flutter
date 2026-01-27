@@ -136,8 +136,7 @@ class BdChatSdkPlugin : FlutterPlugin, MethodCallHandler {
             BoldDeskChatSDK.enablePushNotification(fcmToken)
             result.success(null)
         } else if (call.method == "disablePushNotification") {
-            val fcmToken = call.argument<String>("fcmToken") ?: ""
-            BoldDeskChatSDK.disablePushNotification(fcmToken)
+            BoldDeskChatSDK.disablePushNotification()
             result.success(null)
         } else if (call.method == "handlePushNotifications") {
             val messageData = call.argument<Map<String, String>>("body") ?: emptyMap()

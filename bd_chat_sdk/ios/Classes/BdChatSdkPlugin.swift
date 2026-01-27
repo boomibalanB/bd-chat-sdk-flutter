@@ -89,11 +89,6 @@ public class BdChatSdkPlugin: NSObject, FlutterPlugin {
       BDChatSDK.setUserToken(userToken)
       result(nil) 
     case "disablePushNotification":
-      guard let args = call.arguments as? [String: Any],
-        let token = args["fcmToken"] as? String
-      else {
-        return
-      }
       BDChatSDK.disablePushNotification()
       result(nil) 
     case "showChat":

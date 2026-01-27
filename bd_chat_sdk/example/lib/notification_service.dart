@@ -64,7 +64,7 @@ class NotificationService {
 
   static void disablePushNotification() {
      if (_cachedFcmToken != null && _cachedFcmToken!.isNotEmpty) {
-       BoldDeskChatSDK.disablePushNotification(_cachedFcmToken!); 
+       BoldDeskChatSDK.disablePushNotification(); 
       }
   }
 }
