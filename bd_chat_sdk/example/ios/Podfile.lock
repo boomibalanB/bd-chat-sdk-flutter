@@ -1,7 +1,7 @@
 PODS:
   - bd-chat-sample-sdk (1.0.1)
   - bd_chat_sdk (0.0.1):
-    - bd-chat-sample-sdk (~> 1.0.1)
+    - bd-chat-sample-sdk (~> 1.0.0)
     - Flutter
   - Firebase/CoreOnly (12.6.0):
     - FirebaseCore (~> 12.6.0)
@@ -106,7 +106,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   bd-chat-sample-sdk: 499d81a77f35fc1cd4f08bb6cceebb11690fd33e
-  bd_chat_sdk: 2fc178320b947b8c45e2cc5e21ae1e84e536bcdd
+  bd_chat_sdk: 930c578c612a7b1fa25675b8b1d6c72f94067271
   Firebase: a451a7b61536298fd5cbfe3a746fd40443a50679
   firebase_core: 7ca5e04fc97329a2245376eba53c5bed113ca21e
   firebase_messaging: d9fd1aeeabefbbee02336521ccd19fc6e93c4625

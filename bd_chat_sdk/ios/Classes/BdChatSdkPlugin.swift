@@ -56,38 +56,38 @@ public class BdChatSdkPlugin: NSObject, FlutterPlugin {
     case "isChatOpen":
       let isChatOpen = BDChatSDK.isChatOpen()
       result(isChatOpen) 
-    case "setUserEmail":
-      guard let args = call.arguments as? [String: Any],
-        let email = args["email"] as? String
-      else {
-        return
-      }
-      BDChatSDK.setUserEmail(email)
-      result(nil)   
-    case "setUserName":
-      guard let args = call.arguments as? [String: Any],
-        let name = args["name"] as? String
-      else {
-        return
-      }
-      BDChatSDK.setUserName(name)
-      result(nil)   
-    case "setUserPhoneNo":
-      guard let args = call.arguments as? [String: Any],
-        let phoneNo = args["phoneNo"] as? String
-      else {
-        return
-      }
-      BDChatSDK.setUserPhoneNo(phoneNo)
-      result(nil)  
-    case "setUserToken":
-      guard let args = call.arguments as? [String: Any],
-        let userToken = args["userToken"] as? String
-      else {
-        return
-      }
-      BDChatSDK.setUserToken(userToken)
-      result(nil) 
+    // case "setUserEmail":
+    //   guard let args = call.arguments as? [String: Any],
+    //     let email = args["email"] as? String
+    //   else {
+    //     return
+    //   }
+    //   BDChatSDK.setUserEmail(email)
+    //   result(nil)   
+    // case "setUserName":
+    //   guard let args = call.arguments as? [String: Any],
+    //     let name = args["name"] as? String
+    //   else {
+    //     return
+    //   }
+    //   BDChatSDK.setUserName(name)
+    //   result(nil)   
+    // case "setUserPhoneNo":
+    //   guard let args = call.arguments as? [String: Any],
+    //     let phoneNo = args["phoneNo"] as? String
+    //   else {
+    //     return
+    //   }
+    //   BDChatSDK.setUserPhoneNo(phoneNo)
+    //   result(nil)  
+    // case "setUserToken":
+    //   guard let args = call.arguments as? [String: Any],
+    //     let userToken = args["userToken"] as? String
+    //   else {
+    //     return
+    //   }
+    //   BDChatSDK.setUserToken(userToken)
+    //   result(nil) 
     case "disablePushNotification":
       BDChatSDK.disablePushNotification()
       result(nil) 
