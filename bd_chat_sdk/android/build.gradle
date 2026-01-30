@@ -66,5 +66,5 @@ android {
 }
 
 dependencies {
-    implementation("io.github.dineshdksf4610:test-bolddesk-chat-SDK:1.2.1")
+    implementation("io.github.dineshdksf4610:test-bolddesk-chat-SDK:1.2.4")
 }
