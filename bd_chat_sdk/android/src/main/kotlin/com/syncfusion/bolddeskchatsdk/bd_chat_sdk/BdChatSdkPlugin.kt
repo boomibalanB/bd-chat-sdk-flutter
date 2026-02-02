@@ -153,7 +153,7 @@ class BdChatSdkPlugin : FlutterPlugin, MethodCallHandler {
             val icon = call.argument<String>("icon") ?: ""
             val iconResId = resolveIcon(context, icon)
             try {
-                BoldDeskChatSDK.handlePushNotifications(context, messageData, iconResId)
+                //BoldDeskChatSDK.handlePushNotifications(context, messageData, iconResId)
                 result.success("Notification shown Successfully")
             } catch (e: Exception) {
                 result.error("NOTIFICATION_FAILED", e.message, null)
@@ -163,7 +163,7 @@ class BdChatSdkPlugin : FlutterPlugin, MethodCallHandler {
             val accentColor = call.argument<String>("accentColor") ?: ""
             val backgroundColor = call.argument<String>("backgroundColor") ?: ""
             val stickyButtonColor = call.argument<String>("stickyButtonColor") ?: ""
-            BoldDeskChatSDK.applyTheme(appBarColor , accentColor, backgroundColor, stickyButtonColor)
+            BoldDeskChatSDK.applyTheme(context, appBarColor , accentColor, backgroundColor, stickyButtonColor)
             result.success("Theme applied Successfully")
         } else if (call.method == "setSystemFontSize"){
             val isEnabled = call.argument<Boolean>("enable") ?: false
