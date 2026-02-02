@@ -558,7 +558,7 @@ class _HostAppUIState extends State<HostAppUI> {
                     try {
                       final parsedValue = _parseValue(valueStr);
                       setState(() {
-                        _customFields[key] = _customValueController.text;
+                        _customFields[key] = Platform.isIOS ? parsedValue : _customValueController.text;
                         _customKeyController.clear();
                         _customValueController.clear();
                       });

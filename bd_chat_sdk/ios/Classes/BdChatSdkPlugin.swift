@@ -56,30 +56,25 @@ public class BdChatSdkPlugin: NSObject, FlutterPlugin {
     case "isChatOpen":
       let isChatOpen = BDChatSDK.isChatOpen()
       result(isChatOpen) 
-    case "setUserEmail":
-      guard let args = call.arguments as? [String: Any],
-        let email = args["email"] as? String
-      else {
-        return
+    case "setPrefillFields":
+      let args = call.arguments as? [String: Any]
+      let name = args?["name"] as? String
+      let email = args?["email"] as? String
+      let phoneNumber = args?["phoneNumber"] as? String
+      let rawChatFields = args?["chatFields"] as? [String: Any]
+      var chatFields: [String: Any]? = nil
+      if let raw = rawChatFields {
+        var cleaned = [String: Any]()
+        for (k, v) in raw {
+          if !(v is NSNull) {
+            cleaned[k] = v
+          }
+        }
+        if !cleaned.isEmpty { chatFields = cleaned }
       }
-      BDChatSDK.setUserEmail(email)
-      result(nil)   
-    case "setUserName":
-      guard let args = call.arguments as? [String: Any],
-        let name = args["name"] as? String
-      else {
-        return
-      }
-      BDChatSDK.setUserName(name)
-      result(nil)   
-    case "setUserPhoneNo":
-      guard let args = call.arguments as? [String: Any],
-        let phoneNo = args["phoneNo"] as? String
-      else {
-        return
-      }
-      BDChatSDK.setUserPhoneNo(phoneNo)
-      result(nil)  
+
+      BDChatSDK.setPrefillFields(email: email, name: name, phoneNo: phoneNumber, fields: chatFields)
+      result(nil)
     case "setUserToken":
       guard let args = call.arguments as? [String: Any],
         let userToken = args["userToken"] as? String
@@ -89,11 +84,6 @@ public class BdChatSdkPlugin: NSObject, FlutterPlugin {
       BDChatSDK.setUserToken(userToken)
       result(nil) 
     case "disablePushNotification":
-      guard let args = call.arguments as? [String: Any],
-        let token = args["fcmToken"] as? String
-      else {
-        return
-      }
       BDChatSDK.disablePushNotification()
       result(nil) 
     case "showChat":

@@ -51,17 +51,18 @@ class MethodChannelBdChatSdk extends BdChatSdkPlatform {
 
   @override
   Future<void> setPrefillFields({
-    required String name,
-    required String email,
-    required String phoneNumber,
+    String? name,
+    String? email,
+    String? phoneNumber,
     Map<String, Object?>? chatFields,
   }) async {
-    await methodChannel.invokeMethod('setPrefillFields', {
-      'name': name,
-      'email': email,
-      'phoneNumber': phoneNumber,
-      'chatFields': chatFields,
-    });
+    final args = <String, Object?>{};
+    if (name != null) args['name'] = name;
+    if (email != null) args['email'] = email;
+    if (phoneNumber != null) args['phoneNumber'] = phoneNumber;
+    if (chatFields != null) args['chatFields'] = chatFields;
+
+    await methodChannel.invokeMethod('setPrefillFields', args);
   }
 
   @override

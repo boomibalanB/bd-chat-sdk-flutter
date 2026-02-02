@@ -54,9 +54,9 @@ abstract class BdChatSdkPlatform extends PlatformInterface {
   }
 
   Future<void> setPrefillFields({
-    required String name,
-    required String email,
-    required String phoneNumber,
+    String? name,
+    String? email,
+    String? phoneNumber,
     Map<String, Object?>? chatFields,
   }) async {
     throw UnimplementedError('setPrefillFields() has not been implemented.');

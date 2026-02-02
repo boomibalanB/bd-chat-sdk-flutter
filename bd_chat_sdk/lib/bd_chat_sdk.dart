@@ -30,9 +30,9 @@ class BoldDeskChatSDK {
   }
 
   static Future<void> setPrefillFields({
-    required String name,
-    required String email,
-    required String phoneNumber,
+    String? name,
+    String? email,
+    String? phoneNumber,
     Map<String, Object?>? chatFields,
   }) {
     return BdChatSdkPlatform.instance.setPrefillFields(
