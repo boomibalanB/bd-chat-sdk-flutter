@@ -23,7 +23,7 @@ class NotificationService {
     if (Platform.isAndroid) {
       var isFromMobileSDK = await BoldDeskChatSDK.isFromChatSDK(message.data);
       if(isFromMobileSDK) {
-        BoldDeskChatSDK.handleAndroidNotification(message.data, "sample_app_logo");
+        BoldDeskChatSDK.handleAndroidNotification(message.data, "assets/images/bold-desk-logo_v1.png");
       }
     }
   }
@@ -54,7 +54,7 @@ class NotificationService {
       if (Platform.isAndroid) {
         var isFromMobileSDK = await BoldDeskChatSDK.isFromChatSDK(message.data);
         if(isFromMobileSDK) {
-        BoldDeskChatSDK.handleAndroidNotification(message.data, "sample_app_logo");
+        BoldDeskChatSDK.handleAndroidNotification(message.data, "assets/images/bold-desk-logo_v1.png");
         }
       }
     });

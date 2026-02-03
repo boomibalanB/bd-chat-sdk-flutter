@@ -76,13 +76,12 @@ class MethodChannelBdChatSdk extends BdChatSdkPlatform {
   }
 
   @override
-  Future<void> handleAndroidNotification(
-    Map<String, dynamic> body,
-    String notificationIcon,
-  ) async {
+  Future<void> handleAndroidNotification(Map<String, dynamic> body, String notificationIconPath) async {
+    final ByteData data = await rootBundle.load(notificationIconPath);
+    final Uint8List iconBytes = data.buffer.asUint8List();
     await methodChannel.invokeMethod('handlePushNotifications', {
       'body': body,
-      'notificationIcon': notificationIcon,
+      'notificationIcon': iconBytes,
     });
   }
 

@@ -7,6 +7,25 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:723467922854:android:4e92870cbdafda01223367",
+        "android_client_info": {
+          "package_name": "bolddeskchatsdk.example"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKzBK8lSArzogRTHWUzYTVkALZ8E4nIdE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:723467922854:android:69738b31f6f5e450223367",
         "android_client_info": {
           "package_name": "com.example.androidsdktesting"
@@ -29,6 +48,25 @@
         "mobilesdk_app_id": "1:723467922854:android:8d0ab54dbe3bc1b8223367",
         "android_client_info": {
           "package_name": "com.example.bolddesksdk_android_sample"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKzBK8lSArzogRTHWUzYTVkALZ8E4nIdE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:723467922854:android:2cd1664b0bd6d3f2223367",
+        "android_client_info": {
+          "package_name": "com.syncfusion.bolddesk"
         }
       },
       "oauth_client": [],

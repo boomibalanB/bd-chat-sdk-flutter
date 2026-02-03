@@ -8,6 +8,9 @@ import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 import com.syncfusion.bolddeskandroidchatSDK.BoldDeskChatSDK
 import com.syncfusion.bolddeskandroidchatSDK.R
+import androidx.core.graphics.drawable.IconCompat
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 
 /** BdChatSdkPlugin */
 class BdChatSdkPlugin : FlutterPlugin, MethodCallHandler {
@@ -150,10 +153,11 @@ class BdChatSdkPlugin : FlutterPlugin, MethodCallHandler {
             result.success(null)
         } else if (call.method == "handlePushNotifications") {
             val messageData = call.argument<Map<String, String>>("body") ?: emptyMap()
-            val icon = call.argument<String>("icon") ?: ""
-            val iconResId = resolveIcon(context, icon)
+            val iconBytes = call.argument<ByteArray>("notificationIcon") ?: "".toByteArray()
+            val bitmap = BitmapFactory.decodeByteArray(iconBytes, 0, iconBytes.size)
+            val iconCompact = IconCompat.createWithBitmap(bitmap)
             try {
-                //BoldDeskChatSDK.handlePushNotifications(context, messageData, iconResId)
+                BoldDeskChatSDK.handlePushNotifications(context, messageData, iconCompact)
                 result.success("Notification shown Successfully")
             } catch (e: Exception) {
                 result.error("NOTIFICATION_FAILED", e.message, null)

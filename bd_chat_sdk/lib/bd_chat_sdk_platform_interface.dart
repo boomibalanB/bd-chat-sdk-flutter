@@ -72,34 +72,20 @@ abstract class BdChatSdkPlatform extends PlatformInterface {
     );
   }
 
-  Future<void> handleAndroidNotification(
-    Map<String, dynamic> body,
-    String notificationIcon,
-  ) async {
-    throw UnimplementedError(
-      'handleAndroidNotification() has not been implemented.',
-    );
+  Future<void> handleAndroidNotification(Map<String, dynamic> body, String notificationIconPath) async {
+    throw UnimplementedError('handleAndroidNotification() has not been implemented.');
   }
 
   Future<bool> isFromChatSDK(Map<String, dynamic> messageData) async {
     throw UnimplementedError('isFromChatSDK() has not been implemented.');
   }
 
-  Future<void> applyCustomFontFamilyInAndroid(
-    String regular,
-    String medium,
-    String semiBold,
-    String bold,
-  ) async {
-    throw UnimplementedError(
-      'applyCustomFontFamilyInAndroid() has not been implemented.',
-    );
+  Future<void> applyCustomFontFamilyInAndroid(String regular, String medium, String semiBold, String bold) async {
+    throw UnimplementedError('applyCustomFontFamilyInAndroid() has not been implemented.');
   }
 
   Future<void> applyCustomFontFamilyInIOS(String fontFamily) async {
-    throw UnimplementedError(
-      'applyCustomFontFamilyInIOS() has not been implemented.',
-    );
+    throw UnimplementedError('applyCustomFontFamilyInIOS() has not been implemented.');
   }
 
   Future<void> applyTheme({
