@@ -14,13 +14,14 @@ public class BdChatSdkPlugin: NSObject, FlutterPlugin {
     case "configure":
       guard let args = call.arguments as? [String: Any],
         let appKey = args["appKey"] as? String,
-        let brandUrl = args["brandUrl"] as? String
+        let brandUrl = args["brandUrl"] as? String,
+        let culture = args["culture"] as? String
       else {
         result(["success": false, "message": "Missing arguments"])
         return
       }
       
-      BDChatSDK.configure(appKey: appKey, brandUrl: brandUrl)
+      BDChatSDK.configure(appKey: appKey, brandUrl: brandUrl, culture)
       result(nil)
     case "setPreferredTheme":
       guard let args = call.arguments as? [String: Any],

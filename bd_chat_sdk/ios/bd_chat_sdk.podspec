@@ -16,7 +16,7 @@ A new Flutter plugin project.
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
   s.platform = :ios, '14.0'
-  s.dependency 'bd-chat-sample-sdk', '~> 1.0.4'
+  s.dependency 'bd-chat-sample-sdk', '~> 1.0.6'
   s.ios.deployment_target = '14.0'
 
   # Flutter.framework does not contain a i386 slice.

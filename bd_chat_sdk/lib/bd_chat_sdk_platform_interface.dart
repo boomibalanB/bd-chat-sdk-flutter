@@ -23,7 +23,7 @@ abstract class BdChatSdkPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<void> configure(String appKey, String brandUrl) {
+  Future<void> configure(String appKey, String brandUrl, [String? culture]) {
     throw UnimplementedError('configure() has not been implemented.');
   }
 

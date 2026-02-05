@@ -31,6 +31,7 @@ class BdChatSdkPlugin : FlutterPlugin, MethodCallHandler {
         if (call.method == "configure") {
             val appKey = call.argument<String>("appKey") ?: ""
             val brandUrl = call.argument<String>("brandUrl") ?: ""
+            //val culture = call.argument<String>("culture") ?: "en-US"
             try {
                 BoldDeskChatSDK.configure(context, appKey, brandUrl)
             } catch (e: Exception) {
