@@ -19,11 +19,11 @@ Future<void> main() async {
   //   alert: true,
   //   badge: true,
   // );
-  // //   // Request Notification permission when user enter into application
+  //   // Request Notification permission when user enter into application
   // await FirebaseMessaging.instance.requestPermission();
-  // //   // Initialize Firebase Messaging services to receive Notifications
+  //   // Initialize Firebase Messaging services to receive Notifications
   // NotificationService.firebaseMessagingInitialize();
-  // //   // Get FCM Token Based
+  //   // Get FCM Token Based
   // await NotificationService.getFCMToken();
 
   // Handle notification when app is terminated state (iOS only)
@@ -66,11 +66,11 @@ class _MyAppState extends State<MyApp> {
     final savedDomainUrl = prefs.getString('domainUrl') ?? '';
 
     if (savedAppToken.isNotEmpty && savedDomainUrl.isNotEmpty) {
-      BoldDeskChatSDK.initialize(savedAppToken, savedDomainUrl, "ta");
+      BoldDeskChatSDK.initialize(savedAppToken, savedDomainUrl);
     } else {
       BoldDeskChatSDK.initialize(
         "android_sdk_idUR6cGkKubjs8g3fRy2mL0tDTTKfIh9qgDhE4bNo",
-        "https://dev-chat-integration.bolddesk.com", "ta" 
+        "https://dev-chat-integration.bolddesk.com",
       );
     }
     BoldDeskChatSDK.enableLogging();
@@ -334,7 +334,7 @@ class _HostAppUIState extends State<HostAppUI> {
 
                       // Re-initialize SDK with new config
                       if (appToken.isNotEmpty && domainUrl.isNotEmpty) {
-                        BoldDeskChatSDK.initialize(appToken, domainUrl, "ta");
+                        BoldDeskChatSDK.initialize(appToken, domainUrl);
                       }
 
                       if (!mounted) return;

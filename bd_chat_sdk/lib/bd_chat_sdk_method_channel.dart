@@ -11,7 +11,6 @@ class MethodChannelBdChatSdk extends BdChatSdkPlatform {
 
   @override
   Future<void> configure(String appKey, String brandUrl, [String? culture]) async {
-    print("culture: ${culture}");
     await methodChannel.invokeMethod('configure', {
       'appKey': appKey,
       'brandUrl': brandUrl,
