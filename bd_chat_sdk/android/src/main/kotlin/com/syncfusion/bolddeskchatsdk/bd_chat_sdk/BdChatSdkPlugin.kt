@@ -31,9 +31,9 @@ class BdChatSdkPlugin : FlutterPlugin, MethodCallHandler {
         if (call.method == "configure") {
             val appKey = call.argument<String>("appKey") ?: ""
             val brandUrl = call.argument<String>("brandUrl") ?: ""
-            //val culture = call.argument<String>("culture") ?: "en-US"
+            val culture = call.argument<String>("culture") ?: "en-US"
             try {
-                BoldDeskChatSDK.configure(context, appKey, brandUrl)
+                BoldDeskChatSDK.configure(context, appKey, brandUrl, culture)
             } catch (e: Exception) {
                 result.error("INITIALIZATION_FAILED", e.message, null)
             }
