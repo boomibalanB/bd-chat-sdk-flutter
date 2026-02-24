@@ -13,27 +13,27 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Initialize firebase services
-  // await Firebase.initializeApp();
-  // await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
-  //   sound: true,
-  //   alert: true,
-  //   badge: true,
-  // );
-  //   // Request Notification permission when user enter into application
-  // await FirebaseMessaging.instance.requestPermission();
-  //   // Initialize Firebase Messaging services to receive Notifications
-  // NotificationService.firebaseMessagingInitialize();
-  //   // Get FCM Token Based
-  // await NotificationService.getFCMToken();
+   await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+   await FirebaseMessaging.instance
+        .setForegroundNotificationPresentationOptions(
+            sound: true, alert: true, badge: true);
+    // Request Notification permission when user enter into application
+  await FirebaseMessaging.instance.requestPermission();
+    // Initialize Firebase Messaging services to receive Notifications
+  NotificationService.firebaseMessagingInitialize();
+    // Get FCM Token Based
+  await NotificationService.getFCMToken();
 
   // Handle notification when app is terminated state (iOS only)
-  // if (Platform.isIOS) {
-  //   FirebaseMessaging.instance.getInitialMessage().then((message) async {
-  //     if (message != null) {
-  //       // BoldDeskSupportSDK.handleNotification(message.data);
-  //     }
-  //   });
-  // }
+  if (Platform.isIOS) {
+    FirebaseMessaging.instance.getInitialMessage().then((message) async {
+      if (message != null) {
+        BoldDeskChatSDK.handleiOSPushNotification(message.data);
+      }
+    });
+  }
   runApp(const MyApp());
 }
 
@@ -64,13 +64,15 @@ class _MyAppState extends State<MyApp> {
     final prefs = await SharedPreferences.getInstance();
     final savedAppToken = prefs.getString('appToken') ?? '';
     final savedDomainUrl = prefs.getString('domainUrl') ?? '';
+    final savedLanguage = prefs.getString('language') ?? '';
 
     if (savedAppToken.isNotEmpty && savedDomainUrl.isNotEmpty) {
-      BoldDeskChatSDK.initialize(savedAppToken, savedDomainUrl);
+      BoldDeskChatSDK.initialize(savedAppToken, savedDomainUrl, savedLanguage);
     } else {
       BoldDeskChatSDK.initialize(
-        "android_sdk_idUR6cGkKubjs8g3fRy2mL0tDTTKfIh9qgDhE4bNo",
+        "android_sdk_lBkzCSa8NHe9hC4imnUtUfI0uP9dbMfA2OXznuokIw",
         "https://dev-chat-integration.bolddesk.com",
+        "en-US",
       );
     }
     BoldDeskChatSDK.enableLogging();
@@ -99,6 +101,7 @@ class _HostAppUIState extends State<HostAppUI> {
   // Controllers for app configuration and user token
   final TextEditingController _appTokenController = TextEditingController();
   final TextEditingController _domainUrlController = TextEditingController();
+  final TextEditingController _languageController = TextEditingController();
   final TextEditingController _userTokenController = TextEditingController();
 
   // Controllers for custom fields
@@ -128,6 +131,7 @@ class _HostAppUIState extends State<HostAppUI> {
     _customKeyController.dispose();
     _customValueController.dispose();
     _appTokenController.dispose();
+    _languageController.dispose();
     _domainUrlController.dispose();
     _userTokenController.dispose();
     _appbarColorController.dispose();
@@ -147,15 +151,19 @@ class _HostAppUIState extends State<HostAppUI> {
     final prefs = await SharedPreferences.getInstance();
     final appToken =
         prefs.getString('appToken') ??
-        'android_sdk_idUR6cGkKubjs8g3fRy2mL0tDTTKfIh9qgDhE4bNo';
+        'android_sdk_lBkzCSa8NHe9hC4imnUtUfI0uP9dbMfA2OXznuokIw';
     final domainUrl =
         prefs.getString('domainUrl') ??
-        'https://dev-chat-integration.bolddesk.com';
+        'https://dev-chat-integration.bolddesk.com'; 
+    final language =
+        prefs.getString('language') ??
+        'en-US';
     final userToken = prefs.getString('userToken') ?? '';
 
     setState(() {
       _appTokenController.text = appToken;
       _domainUrlController.text = domainUrl;
+      _languageController.text = language;
       _userTokenController.text = userToken;
     });
   }
@@ -321,6 +329,13 @@ class _HostAppUIState extends State<HostAppUI> {
               ),
             ),
             SizedBox(height: 8),
+            TextField(
+              controller: _languageController,
+              decoration: InputDecoration(
+                labelText: "language",
+                border: OutlineInputBorder(),
+              ),
+            ),
             Row(
               children: [
                 Expanded(
@@ -328,13 +343,15 @@ class _HostAppUIState extends State<HostAppUI> {
                     onPressed: () async {
                       final appToken = _appTokenController.text.trim();
                       final domainUrl = _domainUrlController.text.trim();
+                      final language = _languageController.text.trim();
                       final prefs = await SharedPreferences.getInstance();
                       await prefs.setString('appToken', appToken);
                       await prefs.setString('domainUrl', domainUrl);
+                      await prefs.setString('language', language);
 
                       // Re-initialize SDK with new config
                       if (appToken.isNotEmpty && domainUrl.isNotEmpty) {
-                        BoldDeskChatSDK.initialize(appToken, domainUrl);
+                        BoldDeskChatSDK.initialize(appToken, domainUrl, language);
                       }
 
                       if (!mounted) return;

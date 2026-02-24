@@ -87,6 +87,18 @@ class MethodChannelBdChatSdk extends BdChatSdkPlatform {
   }
 
   @override
+  Future<bool> handleiOSPushNotification(Map<String, dynamic> messageData) async {
+    final safeData = messageData.map(
+      (k, v) => MapEntry(k, v.toString()),
+    );
+
+    return await methodChannel.invokeMethod(
+      'handlePushNotification',
+      {'messageData': safeData},
+    );
+  }
+
+  @override
   Future<bool> isFromChatSDK(Map<String, dynamic> messageData) async {
     return await methodChannel.invokeMethod('isFromChatSDK', {
       'messageData': messageData,

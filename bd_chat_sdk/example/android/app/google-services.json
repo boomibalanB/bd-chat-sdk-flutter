@@ -1,32 +1,13 @@
 {
   "project_info": {
-    "project_number": "723467922854",
-    "project_id": "pushnotification-2adfd",
-    "storage_bucket": "pushnotification-2adfd.firebasestorage.app"
+    "project_number": "615738721614",
+    "project_id": "notification-testing-8ce82",
+    "storage_bucket": "notification-testing-8ce82.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:723467922854:android:4e92870cbdafda01223367",
-        "android_client_info": {
-          "package_name": "bolddeskchatsdk.example"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDKzBK8lSArzogRTHWUzYTVkALZ8E4nIdE"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:723467922854:android:69738b31f6f5e450223367",
+        "mobilesdk_app_id": "1:615738721614:android:71ade03c28737ae4598a1f",
         "android_client_info": {
           "package_name": "com.example.androidsdktesting"
         }
@@ -34,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDKzBK8lSArzogRTHWUzYTVkALZ8E4nIdE"
+          "current_key": "AIzaSyAxYooNvZo3TlTzQfmDRorstynA7UDG01c"
         }
       ],
       "services": {
@@ -45,15 +26,15 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:723467922854:android:8d0ab54dbe3bc1b8223367",
+        "mobilesdk_app_id": "1:615738721614:android:bb4266fb5d31eda5598a1f",
         "android_client_info": {
-          "package_name": "com.example.bolddesksdk_android_sample"
+          "package_name": "com.example.bolddesksdk_flutter_sample"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDKzBK8lSArzogRTHWUzYTVkALZ8E4nIdE"
+          "current_key": "AIzaSyAxYooNvZo3TlTzQfmDRorstynA7UDG01c"
         }
       ],
       "services": {
@@ -64,15 +45,15 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:723467922854:android:2cd1664b0bd6d3f2223367",
+        "mobilesdk_app_id": "1:615738721614:android:07796be5440e3ec1598a1f",
         "android_client_info": {
-          "package_name": "com.syncfusion.bolddesk"
+          "package_name": "com.example.comments_app"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDKzBK8lSArzogRTHWUzYTVkALZ8E4nIdE"
+          "current_key": "AIzaSyAxYooNvZo3TlTzQfmDRorstynA7UDG01c"
         }
       ],
       "services": {
@@ -83,7 +64,7 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:723467922854:android:9846ab55e1051336223367",
+        "mobilesdk_app_id": "1:615738721614:android:a31ebd624e2d4543598a1f",
         "android_client_info": {
           "package_name": "com.syncfusion.bolddeskchatsdk.bd_chat_sdk_example"
         }
@@ -91,7 +72,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDKzBK8lSArzogRTHWUzYTVkALZ8E4nIdE"
+          "current_key": "AIzaSyAxYooNvZo3TlTzQfmDRorstynA7UDG01c"
         }
       ],
       "services": {
@@ -102,7 +83,7 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:723467922854:android:6603759fd32e6dce223367",
+        "mobilesdk_app_id": "1:615738721614:android:13a789c3de511bdc598a1f",
         "android_client_info": {
           "package_name": "com.syncfusion.sampleandroidapp"
         }
@@ -110,7 +91,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDKzBK8lSArzogRTHWUzYTVkALZ8E4nIdE"
+          "current_key": "AIzaSyAxYooNvZo3TlTzQfmDRorstynA7UDG01c"
         }
       ],
       "services": {

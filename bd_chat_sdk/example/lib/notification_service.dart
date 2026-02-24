@@ -11,7 +11,7 @@ class NotificationService {
 
     if (Platform.isIOS) {
       FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-        BoldDeskChatSDK.showChat();
+        BoldDeskChatSDK.handleiOSPushNotification(message.data);
       });
     }
   }

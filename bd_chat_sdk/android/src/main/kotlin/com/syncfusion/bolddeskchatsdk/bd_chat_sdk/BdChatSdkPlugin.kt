@@ -20,6 +20,8 @@ class BdChatSdkPlugin : FlutterPlugin, MethodCallHandler {
     // when the Flutter Engine is detached from the Activity
     private lateinit var channel: MethodChannel
     private lateinit var context: Context
+    private val platform: String = "Flutter"
+    private val sdkVersion: String = "0.0.1"
 
     override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         channel = MethodChannel(flutterPluginBinding.binaryMessenger, "bd_chat_sdk")
@@ -33,12 +35,14 @@ class BdChatSdkPlugin : FlutterPlugin, MethodCallHandler {
             val brandUrl = call.argument<String>("brandUrl") ?: ""
             val culture = call.argument<String>("culture") ?: "en-US"
             try {
+                BoldDeskChatSDK.setPlatform(platform, sdkVersion)
                 BoldDeskChatSDK.configure(context, appKey, brandUrl, culture)
             } catch (e: Exception) {
                 result.error("INITIALIZATION_FAILED", e.message, null)
             }
         } else if (call.method == "showChat") {
             try {
+                BoldDeskChatSDK.setPlatform(platform, sdkVersion)
                 BoldDeskChatSDK.showChat(context)
                 result.success("Chat Shown Successfully")
             } catch (e: Exception) {
@@ -158,6 +162,7 @@ class BdChatSdkPlugin : FlutterPlugin, MethodCallHandler {
             val bitmap = BitmapFactory.decodeByteArray(iconBytes, 0, iconBytes.size)
             val iconCompact = IconCompat.createWithBitmap(bitmap)
             try {
+                BoldDeskChatSDK.setPlatform(platform, sdkVersion)
                 BoldDeskChatSDK.handlePushNotifications(context, messageData, iconCompact)
                 result.success("Notification shown Successfully")
             } catch (e: Exception) {

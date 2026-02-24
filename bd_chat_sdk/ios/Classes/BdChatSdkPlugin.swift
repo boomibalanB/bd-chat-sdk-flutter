@@ -112,6 +112,15 @@ public class BdChatSdkPlugin: NSObject, FlutterPlugin {
       }
       BDChatSDK.customFontName = fontFamily
       result(nil)
+    case "handlePushNotification":
+      if let args = call.arguments as? [String: Any],
+        let messageData = args["messageData"] as? [String: String] {
+
+          BDChatSDK.handlePushNotification(userInfo: messageData)
+          result(true)
+      } else {
+          result(false)
+      }
     case "setSystemFontSize":
       guard let args = call.arguments as? [String: Any],
         let enable = args["enable"] as? Bool
