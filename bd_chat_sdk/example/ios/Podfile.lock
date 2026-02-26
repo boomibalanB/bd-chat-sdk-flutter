@@ -1,7 +1,7 @@
 PODS:
-  - bd-chat-sample-sdk (1.0.10)
+  - bd-chat-sample-sdk (1.0.11)
   - bd_chat_sdk (0.0.1):
-    - bd-chat-sample-sdk (~> 1.0.10)
+    - bd-chat-sample-sdk (~> 1.0.11)
     - Flutter
   - Firebase/CoreOnly (12.8.0):
     - FirebaseCore (~> 12.8.0)
@@ -111,8 +111,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/shared_preferences_foundation/darwin"
 
 SPEC CHECKSUMS:
-  bd-chat-sample-sdk: 9119cedd5a51a05f74541a3384cbed08f9849e08
-  bd_chat_sdk: f5f7c4099cc739f6c8ec595e3e40c4588760739f
+  bd-chat-sample-sdk: 5d29e3ffd15d650677880ab2c1653a5784e4d35f
+  bd_chat_sdk: bcc16548973dc242640aa89cbb7849f2cdd67fc1
   Firebase: 9a58fdbc9d8655ed7b79a19cf9690bb007d3d46d
   firebase_core: 8d5e24676350f15dd111aa59a88a1ae26605f9ba
   firebase_messaging: 834cfc0887393d3108cdb19da8e57655c54fd0e4
