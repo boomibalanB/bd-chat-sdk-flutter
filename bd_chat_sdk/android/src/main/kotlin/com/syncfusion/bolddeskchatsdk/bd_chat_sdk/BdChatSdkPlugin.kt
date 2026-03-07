@@ -37,6 +37,7 @@ class BdChatSdkPlugin : FlutterPlugin, MethodCallHandler {
             try {
                 BoldDeskChatSDK.setPlatform(platform, sdkVersion)
                 BoldDeskChatSDK.configure(context, appKey, brandUrl, culture)
+				result.success(null)
             } catch (e: Exception) {
                 result.error("INITIALIZATION_FAILED", e.message, null)
             }
