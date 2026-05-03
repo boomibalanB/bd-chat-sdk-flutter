@@ -4,6 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'bd_chat_sdk'
+  s.module_name      = 'ChatSDK_Alt'    
   s.version          = '0.0.1'
   s.summary          = 'A new Flutter plugin project.'
   s.description      = <<-DESC
