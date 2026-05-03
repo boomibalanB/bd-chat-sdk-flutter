@@ -4,7 +4,6 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'bd_chat_sdk'
-  s.module_name      = 'ChatSDK_Alt'    
   s.version          = '0.0.1'
   s.summary          = 'A new Flutter plugin project.'
   s.description      = <<-DESC
@@ -17,7 +16,7 @@ A new Flutter plugin project.
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
   s.platform = :ios, '14.0'
-  s.dependency 'bd-chat-sample-sdk', '~> 1.0.14'
+  s.dependency 'bd-chat-sample-sdk', '~> 1.0.15'
   s.ios.deployment_target = '14.0'
 
   # Flutter.framework does not contain a i386 slice.
