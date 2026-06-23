@@ -3,9 +3,12 @@ import UIKit
 import BoldDeskChatSDK
 
 public class BdChatSdkPlugin: NSObject, FlutterPlugin {
+  private var channel: FlutterMethodChannel?
+
   public static func register(with registrar: FlutterPluginRegistrar) {
     let channel = FlutterMethodChannel(name: "bd_chat_sdk", binaryMessenger: registrar.messenger())
     let instance = BdChatSdkPlugin()
+    instance.channel = channel
     registrar.addMethodCallDelegate(instance, channel: channel)
   }
 
@@ -143,6 +146,18 @@ public class BdChatSdkPlugin: NSObject, FlutterPlugin {
           backgroundColor: backgroundColor,
           stickyButtonColor: stickyButtonColor
       )
+      result(nil)
+    case "setOnTicketCreatedListener":
+      // set the SDK callback to forward to Flutter
+      BDChatSDK.onTicketCreatedEventCallBack = { [weak self] ticketId in
+        DispatchQueue.main.async {
+          self?.channel?.invokeMethod("onTicketCreated", ticketId)
+        }
+      }
+      result(nil)
+    case "removeOnTicketCreatedListener":
+      // clear the SDK callback to avoid calling Flutter when no listener is set
+      BDChatSDK.onTicketCreatedEventCallBack = nil
       result(nil)
     default:
       result(FlutterMethodNotImplemented)

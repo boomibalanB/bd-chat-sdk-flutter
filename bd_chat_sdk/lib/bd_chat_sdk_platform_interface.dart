@@ -84,6 +84,10 @@ abstract class BdChatSdkPlatform extends PlatformInterface {
     throw UnimplementedError('handleiOSPushNotification() has not been implemented.');
   }
 
+  Future<void> setOnTicketCreatedListener(void Function(int)? callback) async {
+    throw UnimplementedError('setOnTicketCreatedListener() has not been implemented.');
+  }
+
   Future<void> applyCustomFontFamilyInAndroid(String regular, String medium, String semiBold, String bold) async {
     throw UnimplementedError('applyCustomFontFamilyInAndroid() has not been implemented.');
   }

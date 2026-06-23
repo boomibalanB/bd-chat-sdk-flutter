@@ -9,6 +9,26 @@ class MethodChannelBdChatSdk extends BdChatSdkPlatform {
   @visibleForTesting
   final methodChannel = const MethodChannel('bd_chat_sdk');
 
+  void Function(int)? _onTicketCreatedCallback;
+
+  MethodChannelBdChatSdk() {
+    methodChannel.setMethodCallHandler(_handleMethodCall);
+  }
+
+  Future<dynamic> _handleMethodCall(MethodCall call) async {
+    if (call.method == 'onTicketCreated') {
+      final dynamic args = call.arguments;
+      int id = 0;
+      if (args is int) {
+        id = args;
+      } else {
+        id = int.tryParse(args?.toString() ?? '') ?? 0;
+      }
+      _onTicketCreatedCallback?.call(id);
+    }
+    return null;
+  }
+
   @override
   Future<void> configure(String appKey, String brandUrl, [String? culture]) async {
     await methodChannel.invokeMethod('configure', {
@@ -140,6 +160,20 @@ class MethodChannelBdChatSdk extends BdChatSdkPlatform {
       'backgroundColor': backgroundColor,
       'stickyButtonColor': stickyButtonColor,
     });
+  }
+
+  @override
+  Future<void> setOnTicketCreatedListener(void Function(int)? callback) async {
+    _onTicketCreatedCallback = callback;
+    try {
+      if (callback != null) {
+        await methodChannel.invokeMethod('setOnTicketCreatedListener');
+      } else {
+        await methodChannel.invokeMethod('removeOnTicketCreatedListener');
+      }
+    } catch (_) {
+      // ignore errors from native side when listener isn't available
+    }
   }
 
   @override

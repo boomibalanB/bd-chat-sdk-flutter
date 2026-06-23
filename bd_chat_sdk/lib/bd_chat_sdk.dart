@@ -69,6 +69,10 @@ class BoldDeskChatSDK {
     return BdChatSdkPlatform.instance.handleiOSPushNotification(messageData);
   }
 
+  static Future<void> setOnTicketCreatedListener(void Function(int)? callback) {
+    return BdChatSdkPlatform.instance.setOnTicketCreatedListener(callback);
+  }
+
   static Future<void> applyCustomFontFamilyInAndroid({
     required String regular,
     required String medium,
