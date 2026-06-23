@@ -150,9 +150,12 @@ public class BdChatSdkPlugin: NSObject, FlutterPlugin {
     case "setOnTicketCreatedListener":
       // set the SDK callback to forward to Flutter
       BDChatSDK.onTicketCreatedEventCallBack = { [weak self] ticketId in
-        DispatchQueue.main.async {
-          self?.channel?.invokeMethod("onTicketCreated", ticketId)
-        }
+         DispatchQueue.main.async {
+              self?.channel?.invokeMethod(
+                  "onTicketCreated",
+                  arguments: ticketId
+              )
+          }
       }
       result(nil)
     case "removeOnTicketCreatedListener":
