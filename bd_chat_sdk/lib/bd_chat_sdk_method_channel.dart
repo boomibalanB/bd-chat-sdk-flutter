@@ -21,6 +21,8 @@ class MethodChannelBdChatSdk extends BdChatSdkPlatform {
       int id = 0;
       if (args is int) {
         id = args;
+      } else if (args is String) {
+        id = int.tryParse(args) ?? 0;
       } else {
         id = int.tryParse(args?.toString() ?? '') ?? 0;
       }
@@ -28,7 +30,7 @@ class MethodChannelBdChatSdk extends BdChatSdkPlatform {
     }
     return null;
   }
-
+  
   @override
   Future<void> configure(String appKey, String brandUrl, [String? culture]) async {
     await methodChannel.invokeMethod('configure', {
@@ -163,21 +165,21 @@ class MethodChannelBdChatSdk extends BdChatSdkPlatform {
   }
 
   @override
-  Future<void> setOnTicketCreatedListener(void Function(int)? callback) async {
-    _onTicketCreatedCallback = callback;
-    try {
-      if (callback != null) {
-        await methodChannel.invokeMethod('setOnTicketCreatedListener');
-      } else {
-        await methodChannel.invokeMethod('removeOnTicketCreatedListener');
-      }
-    } catch (_) {
-      // ignore errors from native side when listener isn't available
-    }
-  }
-
-  @override
   Future<void> setSystemFontSize(bool enable) async {
     await methodChannel.invokeMethod('setSystemFontSize', {'enable': enable});
+  }
+
+ @override
+  Future<void> setOnTicketCreatedListener(void Function(int)? callback) async {
+    _onTicketCreatedCallback = callback;
+
+    try {
+      await methodChannel.invokeMethod(
+        'setOnTicketCreatedListener',
+        <String, dynamic>{
+          'enabled': callback != null,
+        },
+      );
+    } catch (_) {}
   }
 }

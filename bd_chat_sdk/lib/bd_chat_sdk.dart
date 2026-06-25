@@ -29,6 +29,10 @@ class BoldDeskChatSDK {
     return BdChatSdkPlatform.instance.enablePushNotification(fcmToken);
   }
 
+  static Future<void> setOnTicketCreatedListener(void Function(int)? callback) {
+    return BdChatSdkPlatform.instance.setOnTicketCreatedListener(callback);
+  }
+
   static Future<void> setPrefillFields({
     String? name,
     String? email,
@@ -67,10 +71,6 @@ class BoldDeskChatSDK {
 
   static Future<bool> handleiOSPushNotification(Map<String, dynamic> messageData) {
     return BdChatSdkPlatform.instance.handleiOSPushNotification(messageData);
-  }
-
-  static Future<void> setOnTicketCreatedListener(void Function(int)? callback) {
-    return BdChatSdkPlatform.instance.setOnTicketCreatedListener(callback);
   }
 
   static Future<void> applyCustomFontFamilyInAndroid({

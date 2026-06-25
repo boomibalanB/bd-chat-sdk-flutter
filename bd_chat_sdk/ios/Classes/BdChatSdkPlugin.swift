@@ -3,16 +3,17 @@ import UIKit
 import BoldDeskChatSDK
 
 public class BdChatSdkPlugin: NSObject, FlutterPlugin {
-  private var channel: FlutterMethodChannel?
-
   public static func register(with registrar: FlutterPluginRegistrar) {
     let channel = FlutterMethodChannel(name: "bd_chat_sdk", binaryMessenger: registrar.messenger())
     let instance = BdChatSdkPlugin()
-    instance.channel = channel
     registrar.addMethodCallDelegate(instance, channel: channel)
   }
 
+  private let platform: String = "Flutter"
+  private let sdkVersion: String = "0.0.1"
+
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+    
     switch call.method {
     case "configure":
       guard let args = call.arguments as? [String: Any],
@@ -24,6 +25,7 @@ public class BdChatSdkPlugin: NSObject, FlutterPlugin {
         return
       }
       
+      BDChatSDK.setPlatform(sdkPlatform: platform, sdkVersion: sdkVersion)
       BDChatSDK.configure(appKey: appKey, brandUrl: brandUrl, culture)
       result(nil)
     case "setPreferredTheme":
@@ -44,6 +46,7 @@ public class BdChatSdkPlugin: NSObject, FlutterPlugin {
         preferredTheme = .system
       }
 
+      BDChatSDK.setPlatform(sdkPlatform: platform, sdkVersion: sdkVersion)
       BDChatSDK.setPreferredTheme(preferredTheme)
       result(nil)
     case "enablePushNotification":
@@ -52,12 +55,15 @@ public class BdChatSdkPlugin: NSObject, FlutterPlugin {
       else {
         return
       }
+      BDChatSDK.setPlatform(sdkPlatform: platform, sdkVersion: sdkVersion)
       BDChatSDK.enablePushNotification(fcmToken: token ?? "")
       result(nil)   
     case "enableLogging":
+      BDChatSDK.setPlatform(sdkPlatform: platform, sdkVersion: sdkVersion)
       BDChatSDK.enableLogging()
       result(nil) 
     case "isChatOpen":
+      BDChatSDK.setPlatform(sdkPlatform: platform, sdkVersion: sdkVersion)
       let isChatOpen = BDChatSDK.isChatOpen()
       result(isChatOpen) 
     case "setPrefillFields":
@@ -77,6 +83,7 @@ public class BdChatSdkPlugin: NSObject, FlutterPlugin {
         if !cleaned.isEmpty { chatFields = cleaned }
       }
 
+      BDChatSDK.setPlatform(sdkPlatform: platform, sdkVersion: sdkVersion)
       BDChatSDK.setPrefillFields(email: email, name: name, phoneNo: phoneNumber, fields: chatFields)
       result(nil)
     case "setUserToken":
@@ -85,23 +92,29 @@ public class BdChatSdkPlugin: NSObject, FlutterPlugin {
       else {
         return
       }
+      BDChatSDK.setPlatform(sdkPlatform: platform, sdkVersion: sdkVersion)
       BDChatSDK.setUserToken(userToken)
       result(nil) 
     case "disablePushNotification":
+      BDChatSDK.setPlatform(sdkPlatform: platform, sdkVersion: sdkVersion)
       BDChatSDK.disablePushNotification()
       result(nil) 
     case "showChat":
+      BDChatSDK.setPlatform(sdkPlatform: platform, sdkVersion: sdkVersion)
       BDChatSDK.showChat()
       result(nil) 
     case "closeChat":
+      BDChatSDK.setPlatform(sdkPlatform: platform, sdkVersion: sdkVersion)
       BDChatSDK.closeChat()
       result(nil) 
     case "clearSession":
+      BDChatSDK.setPlatform(sdkPlatform: platform, sdkVersion: sdkVersion)
       BDChatSDK.clearSession()
       result(nil) 
     case "isFromChatSDK":
      if let args = call.arguments as? [String: Any],
         let messageData = args["messageData"] as? [AnyHashable: Any] {
+          BDChatSDK.setPlatform(sdkPlatform: platform, sdkVersion: sdkVersion)
           let isFromSDK = BDChatSDK.isFromChatSDK(userInfo: messageData)
         result(isFromSDK)
       } else {
@@ -113,6 +126,7 @@ public class BdChatSdkPlugin: NSObject, FlutterPlugin {
       else {
         return
       }
+      BDChatSDK.setPlatform(sdkPlatform: platform, sdkVersion: sdkVersion)
       BDChatSDK.customFontName = fontFamily
       result(nil)
     case "handlePushNotification":
@@ -130,6 +144,7 @@ public class BdChatSdkPlugin: NSObject, FlutterPlugin {
       else {
         return
       }
+      BDChatSDK.setPlatform(sdkPlatform: platform, sdkVersion: sdkVersion)
       BDChatSDK.applySystemFontSize = enable
       result(nil)
     case "applyTheme":
@@ -140,6 +155,7 @@ public class BdChatSdkPlugin: NSObject, FlutterPlugin {
       let backgroundColor = args?["backgroundColor"] as? String
       let stickyButtonColor = args?["stickyButtonColor"] as? String
 
+      BDChatSDK.setPlatform(sdkPlatform: platform, sdkVersion: sdkVersion)
       BDChatSDK.applyTheme(
           appbarColor: appbarColor,
           accentColor: accentColor,
@@ -148,19 +164,19 @@ public class BdChatSdkPlugin: NSObject, FlutterPlugin {
       )
       result(nil)
     case "setOnTicketCreatedListener":
-      // set the SDK callback to forward to Flutter
-      BDChatSDK.onTicketCreatedEventCallBack = { [weak self] ticketId in
-         DispatchQueue.main.async {
+      let args = call.arguments as? [String: Any]
+      let enabled = args?["enabled"] as? Bool ?? false
+
+      if enabled {
+          BDChatSDK.onTicketCreatedEventCallBack = { [weak self] ticketId in
               self?.channel?.invokeMethod(
                   "onTicketCreated",
                   arguments: ticketId
               )
           }
+      } else {
+          BDChatSDK.onTicketCreatedEventCallBack = nil
       }
-      result(nil)
-    case "removeOnTicketCreatedListener":
-      // clear the SDK callback to avoid calling Flutter when no listener is set
-      BDChatSDK.onTicketCreatedEventCallBack = nil
       result(nil)
     default:
       result(FlutterMethodNotImplemented)

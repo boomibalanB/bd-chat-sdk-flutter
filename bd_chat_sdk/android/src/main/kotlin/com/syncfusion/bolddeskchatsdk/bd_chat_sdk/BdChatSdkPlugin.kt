@@ -37,7 +37,7 @@ class BdChatSdkPlugin : FlutterPlugin, MethodCallHandler {
             try {
                 BoldDeskChatSDK.setPlatform(platform, sdkVersion)
                 BoldDeskChatSDK.configure(context, appKey, brandUrl, culture)
-				result.success(null)
+                result.success(null)
             } catch (e: Exception) {
                 result.error("INITIALIZATION_FAILED", e.message, null)
             }
@@ -180,6 +180,35 @@ class BdChatSdkPlugin : FlutterPlugin, MethodCallHandler {
             val isEnabled = call.argument<Boolean>("enable") ?: false
             BoldDeskChatSDK.setSystemFontSize(isEnabled)
             result.success("Logging set Successfully")
+        } else if (call.method == "setOnTicketCreatedListener") {
+            val enabled = call.argument<Boolean>("enabled") ?: false
+
+            if (enabled) {
+                try {
+                    BoldDeskChatSDK.onTicketCreatedEventCallback = { ticket: Any? ->
+                        try {
+                            
+                            val ticketId = when (ticket) {
+                                is Number -> ticket.toInt()
+                                is String -> ticket.toIntOrNull() ?: 0
+                                else -> ticket?.toString()?.toIntOrNull() ?: 0
+                            }
+                            
+                            channel.invokeMethod("onTicketCreated", ticketId)
+                        } catch (e: Exception) {
+                            channel.invokeMethod("onTicketCreated", 0)
+                        }
+                    }
+                } catch (e: Exception) {
+                }
+            } else {
+                try {
+                    BoldDeskChatSDK.onTicketCreatedEventCallback = null
+                } catch (e: Exception) {
+                    // Silent failure
+                }
+            }
+            result.success(null)
         } else {
             result.notImplemented()
         }
