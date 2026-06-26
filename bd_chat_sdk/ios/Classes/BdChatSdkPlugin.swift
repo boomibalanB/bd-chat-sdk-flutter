@@ -3,9 +3,12 @@ import UIKit
 import BoldDeskChatSDK
 
 public class BdChatSdkPlugin: NSObject, FlutterPlugin {
+  private var channel: FlutterMethodChannel?
+
   public static func register(with registrar: FlutterPluginRegistrar) {
     let channel = FlutterMethodChannel(name: "bd_chat_sdk", binaryMessenger: registrar.messenger())
     let instance = BdChatSdkPlugin()
+    instance.channel = channel
     registrar.addMethodCallDelegate(instance, channel: channel)
   }
 
