@@ -4,7 +4,6 @@ import BoldDeskChatSDK
 
 public class BdChatSdkPlugin: NSObject, FlutterPlugin {
   private var channel: FlutterMethodChannel?
-
   public static func register(with registrar: FlutterPluginRegistrar) {
     let channel = FlutterMethodChannel(name: "bd_chat_sdk", binaryMessenger: registrar.messenger())
     let instance = BdChatSdkPlugin()
@@ -13,7 +12,7 @@ public class BdChatSdkPlugin: NSObject, FlutterPlugin {
   }
 
   private let platform: String = "Flutter"
-  private let sdkVersion: String = "0.0.1"
+  private let sdkVersion: String = "5.0.0"
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
     
