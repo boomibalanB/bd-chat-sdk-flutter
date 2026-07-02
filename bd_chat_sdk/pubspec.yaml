@@ -1,6 +1,6 @@
 name: bd_chat_sdk
 description: "A new Flutter plugin project."
-version: 5.0.0
+version: 5.0.1
 homepage:  https://flutter.dev
 
 environment:

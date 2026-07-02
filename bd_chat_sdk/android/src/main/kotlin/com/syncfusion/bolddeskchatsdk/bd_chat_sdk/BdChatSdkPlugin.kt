@@ -21,7 +21,7 @@ class BdChatSdkPlugin : FlutterPlugin, MethodCallHandler {
     private lateinit var channel: MethodChannel
     private lateinit var context: Context
     private val platform: String = "Flutter"
-    private val sdkVersion: String = "0.0.1"
+    private val sdkVersion: String = "5.0.1"
 
     override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         channel = MethodChannel(flutterPluginBinding.binaryMessenger, "bd_chat_sdk")
